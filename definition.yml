@@ -2,5 +2,7 @@ entry_file: hello.lua
 output_file: hello.js
 
 functions:
-  hello_world:
+  hello:
     return: string
+    args:
+      - string

@@ -1,3 +1,3 @@
 function hello(something) 
-  return ('Hello, $s!'):format(something)
+  return ('Hello, %s!'):format(something)
 end
