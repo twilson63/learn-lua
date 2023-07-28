@@ -1,38 +1,32 @@
-var factory = require('./out.js')
-
+var factory = require('./pst.js')
+/*
+// get balance
 factory().then(i => {
-  const hello = i.cwrap('hello', 'string', ['string'])
-  console.log(hello('Tom'))
+  const handle = i.cwrap('start', 'string', ['string', 'string', 'string'])
+  const state = JSON.stringify({ name: "pst", balances: { tom: 1 } })
+  const action = JSON.stringify({ caller: 'tom', input: { function: 'balance' } })
+  const SmartWeave = JSON.stringify({})
+  const result = handle(state, action, SmartWeave)
+  console.log(result)
+  console.log(JSON.parse(result).result.balance === 1)
 })
-// // import('./hello.js')
-// //   .then(result => result.default)
-// //   .then(Module => Module.cwrap('hello_world', 'string', []))
-// //   .then(hello => console.log(hello()))
-
-// const util = require('util')
-// const fs = require('fs')
-// const bytes = new Uint8Array(fs.readFileSync('./hello.wasm'))
-
-// const env = {
-//   memoryBase: 0,
-//   tableBase: 0,
-//   memory: new WebAssembly.Memory({
-//     initial: 256
-//   }),
-//   table: new WebAssembly.Table({
-//     initial: 0,
-//     element: 'anyfunc'
-//   })
-// }
-
-// WebAssembly.instantiate(bytes, { env: env, a: { w: syscall_dup3 } })
-//   .then(result => console.log(result))
+*/
 
 
-// function syscall_dup3(fd, suggestFD, flags) {
-//   try {
-//     var old = SYSCALLS.getStreamFromFD(fd); if (old.fd === suggestFD) return -28; var suggest = FS.getStream(suggestFD); if (suggest) FS.close(suggest); return FS.createStream(old, suggestFD, suggestFD + 1).fd
-//   } catch (e) {
-//     if (typeof FS == "undefined" || !(e instanceof FS.ErrnoError)) throw e; return -e.errno
-//   }
-// }
+// transfer balance
+factory().then(i => {
+  const handle = i.cwrap('start', 'string', ['string', 'string', 'string'])
+  const state = JSON.stringify({ name: "pst", balances: { tom: 1 } })
+  const action = JSON.stringify({
+    caller: 'tom', input: {
+      function: 'transfer',
+      target: 'sam',
+      qty: 1
+    }
+  })
+  const SmartWeave = JSON.stringify({})
+  const result = handle(state, action, SmartWeave)
+  console.log(result)
+  console.log(JSON.parse(result).state.balances['sam'] === 1)
+})
+

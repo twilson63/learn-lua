@@ -1,8 +1,10 @@
-entry_file: out.lua
-output_file: out.js
+entry_file: pst.lua
+output_file: pst.js
 
 functions:
-  hello:
+  start:
     return: string
     args:
+      - string
+      - string
       - string
