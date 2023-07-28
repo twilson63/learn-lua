@@ -1,5 +1,5 @@
-entry_file: hello.lua
-output_file: hello.js
+entry_file: out.lua
+output_file: out.js
 
 functions:
   hello:

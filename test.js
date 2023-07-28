@@ -1,4 +1,4 @@
-var factory = require('./hello.js')
+var factory = require('./out.js')
 
 factory().then(i => {
   const hello = i.cwrap('hello', 'string', ['string'])
